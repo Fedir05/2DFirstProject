@@ -1,16 +1,13 @@
 using UnityEngine;
 
-public class RandomColorGeneration : MonoBehaviour
+namespace Assets.Scripts
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class RandomColorGeneration : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public Color RandomColor()
+        {
+            return new Color(Random.value, Random.value, Random.value, 1f);
+        }
     }
 }
+

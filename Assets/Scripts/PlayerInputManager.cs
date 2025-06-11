@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Assets.Scripts
 
@@ -7,9 +8,8 @@ namespace Assets.Scripts
     {
         [SerializeField] private PlayerMovementManager playerMovementManager;
         
-        void FixedUpdate()
+        void Update()
         {
-            
             if (Input.GetKeyDown(KeyCode.W))
             {
                 playerMovementManager.TryJump();
