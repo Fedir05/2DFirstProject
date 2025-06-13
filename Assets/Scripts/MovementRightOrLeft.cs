@@ -12,7 +12,7 @@ public class MovementRightOrLeft : MonoBehaviour
     void Start()
     {
         _lookRight = player.transform.localScale;
-        _lookLeft = new Vector3(player.transform.localScale.x, player.transform.localScale.y, player.transform.localScale.z);
+        _lookLeft = new Vector3(-player.transform.localScale.x, player.transform.localScale.y, player.transform.localScale.z);
     }
 
     private void CalculateSpeed()
@@ -34,7 +34,4 @@ public class MovementRightOrLeft : MonoBehaviour
         CalculateSpeed();
         player.linearVelocity = new Vector2(_moveDirection * moveSpeed, player.linearVelocity.y);
     }
-
-    
-    
 }
