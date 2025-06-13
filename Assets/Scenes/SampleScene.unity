@@ -329,6 +329,8 @@ GameObject:
   - component: {fileID: 489664187}
   - component: {fileID: 489664186}
   - component: {fileID: 489664185}
+  - component: {fileID: 489664191}
+  - component: {fileID: 489664190}
   - component: {fileID: 489664189}
   m_Layer: 0
   m_Name: Player
@@ -465,7 +467,7 @@ Transform:
   m_GameObject: {fileID: 489664184}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.98, y: 0.12, z: 0}
+  m_LocalPosition: {x: -1.67, y: -0.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -481,16 +483,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 489664184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 302026bfa63b6384eb13731bb5d9cf4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3592aef5ce2e42f4c89715655e82bb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &489664190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489664184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ca1673506c41a99b668cf2b16984f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 489664186}
-  isJumping: 0
   jumpForce: 5
-  isGrounded: 0
-  groundCheckRadius: 1.2
+  groundCheckRadius: 1.1
   groundMask:
+    serializedVersion: 2
     m_Bits: 8192
+  spriteRenderer: {fileID: 489664187}
+  randomColorGeneration: {fileID: 489664189}
+--- !u!114 &489664191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489664184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0432f37b806c4e96b70140ccf121a978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovementManager: {fileID: 489664190}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,54 +914,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 443403692886839488, guid: 75b29360ff18723449995e78be07e1d5, type: 3}
   m_PrefabInstance: {fileID: 1315363599}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1599704465
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1599704467}
-  - component: {fileID: 1599704466}
-  m_Layer: 0
-  m_Name: ColorManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1599704466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599704465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378bc4ed64c04dafa9330f0ddf793235, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
-  groundMask:
-    m_Bits: 0
-  groundHolder: {fileID: 0}
---- !u!4 &1599704467
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1599704465}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1299999, y: -0.5600792, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1709813937
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,4 +1304,3 @@ SceneRoots:
   - {fileID: 2071108684}
   - {fileID: 1255727682}
   - {fileID: 489664188}
-  - {fileID: 1599704467}
