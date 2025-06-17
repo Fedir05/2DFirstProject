@@ -5,7 +5,7 @@ namespace Assets.Scripts
     public class Platform : MonoBehaviour
     {
         [SerializeField] protected Transform _target;
-        [SerializeField] protected GameObject _collision;
+        [SerializeField] protected Collider2D _collider;
 
         protected bool _isInitiated;
 
@@ -28,11 +28,11 @@ namespace Assets.Scripts
         {
             if (_target.transform.position.y > transform.position.y)
             {
-                _collision.SetActive(true);
+                _collider.enabled = true;
             }
             else
             {
-                _collision.SetActive(false);
+                _collider.enabled = false;
             }
                 
         }
