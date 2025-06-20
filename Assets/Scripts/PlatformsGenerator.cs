@@ -27,7 +27,19 @@ namespace Assets.Scripts
 
             for (int i = 0; i < _stepsCountToSpawn; i++)
             {
-                SpawnPlatform(i + 1);
+                var platformPositionY = _target.position.y + (i + 1) * _stepHeight;
+                
+                int platformsInGroup = Random.Range(1, 3);
+                
+                for (int j = 0; j < platformsInGroup; j++)
+                {
+                    var platformPositionX = Random.Range(_bounds.x, _bounds.y);
+                    var platformPosition = new Vector2(platformPositionX, platformPositionY);
+                    
+                    var spawnedPlatform = Instantiate(_platformPrefab, platformPosition, Quaternion.identity, this.transform);
+                    spawnedPlatform.Init(_target);
+                    _spawnedPlatforms.Enqueue(spawnedPlatform);
+                }
             }
         }
         
@@ -58,7 +70,7 @@ namespace Assets.Scripts
             var platformPositionX = Random.Range(_bounds.x, _bounds.y);
             var platformPositionY = _target.position.y + stepCount * _stepHeight;
             
-            var platformPosition = new Vector3(platformPositionX, platformPositionY, 0);
+            var platformPosition = new Vector2(platformPositionX, platformPositionY);
             
             var spawnedPlatform = Instantiate(_platformPrefab, platformPosition, Quaternion.identity, this.transform);
             
