@@ -7,45 +7,32 @@ namespace Assets.Scripts
     {
         [SerializeField] private Transform _target;
 
-        [SerializeField] private Platform _platformPrefab;
+        [SerializeField] private List<Platform> _platformPrefabVariants;
         [SerializeField] private int _stepsCountToSpawn;
         [SerializeField] private float _stepsCountToDelete;
         [SerializeField] private float _stepHeight;
         [SerializeField] private Vector2 _bounds;
-        
-        private Queue<Platform> _spawnedPlatforms;
 
+        private Queue<List<Platform>> _spawnedPlatforms;
 
         private float _lastPlatformsSpawnedOnPlayerPosition;
         private float _lastPlatformsDeletedOnPlayerPosition;
 
         private void Awake()
         {
-            _spawnedPlatforms = new Queue<Platform>();
-            
+            _spawnedPlatforms = new Queue<List<Platform>>();
+
             _lastPlatformsDeletedOnPlayerPosition = _lastPlatformsSpawnedOnPlayerPosition = _target.position.y;
 
             for (int i = 0; i < _stepsCountToSpawn; i++)
             {
-                var platformPositionY = _target.position.y + (i + 1) * _stepHeight;
-                
-                int platformsInGroup = Random.Range(1, 3);
-                
-                for (int j = 0; j < platformsInGroup; j++)
-                {
-                    var platformPositionX = Random.Range(_bounds.x, _bounds.y);
-                    var platformPosition = new Vector2(platformPositionX, platformPositionY);
-                    
-                    var spawnedPlatform = Instantiate(_platformPrefab, platformPosition, Quaternion.identity, this.transform);
-                    spawnedPlatform.Init(_target);
-                    _spawnedPlatforms.Enqueue(spawnedPlatform);
-                }
+                SpawnPlatform(i + 1);
             }
         }
-        
-        void Update()
+
+        private void Update()
         {
-            if(_target.position.y - _lastPlatformsSpawnedOnPlayerPosition > _stepHeight)
+            if (_target.position.y - _lastPlatformsSpawnedOnPlayerPosition > _stepHeight)
             {
                 SpawnPlatform(_stepsCountToSpawn);
                 _lastPlatformsSpawnedOnPlayerPosition += _stepHeight;
@@ -53,29 +40,41 @@ namespace Assets.Scripts
 
             if (_target.position.y - _lastPlatformsDeletedOnPlayerPosition > _stepHeight * _stepsCountToDelete)
             {
-                var _platformToDelete = _spawnedPlatforms.Dequeue();
+                var platformGroupToDelete = _spawnedPlatforms.Dequeue();
 
-                if (_platformToDelete && _platformToDelete.gameObject)
+                foreach (var platform in platformGroupToDelete)
                 {
-                    Destroy(_platformToDelete.gameObject);
+                    if (platform != null && platform.gameObject != null)
+                    {
+                        Destroy(platform.gameObject);
+                    }
                 }
-                
+
                 _lastPlatformsDeletedOnPlayerPosition += _stepHeight;
             }
-
         }
 
         private void SpawnPlatform(int stepCount)
         {
-            var platformPositionX = Random.Range(_bounds.x, _bounds.y);
             var platformPositionY = _target.position.y + stepCount * _stepHeight;
-            
-            var platformPosition = new Vector2(platformPositionX, platformPositionY);
-            
-            var spawnedPlatform = Instantiate(_platformPrefab, platformPosition, Quaternion.identity, this.transform);
-            
-            spawnedPlatform.Init(_target);
-            _spawnedPlatforms.Enqueue(spawnedPlatform);
+
+            var platformsToSpawnCount = Random.Range(1, 3); 
+            var platformGroup = new List<Platform>();
+
+            for (int i = 0; i < platformsToSpawnCount; i++)
+            {
+                var platformPositionX = Random.Range(_bounds.x, _bounds.y);
+                var platformPosition = new Vector3(platformPositionX, platformPositionY, 0);
+
+                var randomPlatform = _platformPrefabVariants[Random.Range(0, _platformPrefabVariants.Count)];
+
+                var spawnedPlatform = Instantiate(randomPlatform, platformPosition, Quaternion.identity, this.transform);
+                spawnedPlatform.Init(_target);
+
+                platformGroup.Add(spawnedPlatform);
+            }
+
+            _spawnedPlatforms.Enqueue(platformGroup);
         }
     }
 }
