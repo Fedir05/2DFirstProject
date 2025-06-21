@@ -197,7 +197,6 @@ GameObject:
   - component: {fileID: 489664191}
   - component: {fileID: 489664190}
   - component: {fileID: 489664189}
-  - component: {fileID: 489664192}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -350,24 +349,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovementManager: {fileID: 489664190}
---- !u!114 &489664192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 489664184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 596c1720c6383b94a992ffcdd6664a2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputManager: {fileID: 0}
-  player: {fileID: 489664186}
-  moveSpeed: 4
-  _moveDirection: 0
-  _lookRight: {x: 0, y: 0, z: 0}
-  _lookLeft: {x: 0, y: 0, z: 0}
 --- !u!70 &489664193
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -671,7 +652,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 374792382}
-  _platformPrefab: {fileID: 1230251258}
+  _platformPrefabVariants:
+  - {fileID: 1230251258}
   _stepsCountToSpawn: 10
   _stepsCountToDelete: 5
   _stepHeight: 5
