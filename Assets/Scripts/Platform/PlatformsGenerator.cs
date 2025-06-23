@@ -8,7 +8,7 @@ namespace Scripts.Platform
         [SerializeField] private Transform _target;
 
         [SerializeField] private List<Platform> _platformPrefabVariants;
-        [SerializeField] private int _stepsCountToSpawn;
+        [SerializeField] private float _stepsCountToSpawn;
         [SerializeField] private float _stepsCountToDelete;
         [SerializeField] private float _stepHeight;
         [SerializeField] private Vector2 _bounds;
@@ -54,15 +54,16 @@ namespace Scripts.Platform
             }
         }
 
-        private void SpawnPlatform(int stepCount)
+        private void SpawnPlatform(float stepCount)
         {
-            var platformPositionY = _target.position.y + stepCount * _stepHeight;
-
+            var baseY = _target.position.y + stepCount * _stepHeight;
+            
             var platformsToSpawnCount = Random.Range(1, 3); 
             var platformGroup = new List<Platform>();
 
             for (int i = 0; i < platformsToSpawnCount; i++)
             {
+                var platformPositionY = baseY + Random.Range(-0.5f, 2f);
                 var platformPositionX = Random.Range(_bounds.x, _bounds.y);
                 var platformPosition = new Vector3(platformPositionX, platformPositionY, 0);
 
