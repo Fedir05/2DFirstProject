@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 198736843}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Targets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 374792382}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PlatformTarget
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -176,7 +176,7 @@ Transform:
   m_GameObject: {fileID: 374792381}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.096, y: -0.637, z: 0}
+  m_LocalPosition: {x: 0.045, y: -0.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 489664191}
   - component: {fileID: 489664190}
   - component: {fileID: 489664189}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1.7619638
+  m_Mass: 1.6160998
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 489664186}
   jumpForce: 20
-  groundCheckRadius: 1
+  groundCheckRadius: 0.8
   groundMask:
     serializedVersion: 2
     m_Bits: 8192
@@ -383,8 +383,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.024833431, y: -0.10397114}
-  m_Size: {x: 1.4946829, y: 1.4946829}
+  m_Offset: {x: 0.024833437, y: -0.06261165}
+  m_Size: {x: 1.4946831, y: 1.3384384}
   m_Direction: 1
 --- !u!1 &519420028
 GameObject:
@@ -655,7 +655,7 @@ MonoBehaviour:
   _platformPrefabVariants:
   - {fileID: 1230251258}
   - {fileID: 2102731711}
-  _stepsCountToSpawn: 10
+  _stepsCountToSpawn: 5
   _stepsCountToDelete: 5
   _stepHeight: 5
   _bounds: {x: -3, y: 3}
@@ -951,7 +951,7 @@ GameObject:
   - component: {fileID: 2102731713}
   - component: {fileID: 2102731712}
   - component: {fileID: 2102731711}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DisappearingPlatformPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -971,7 +971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 374792382}
-  _collider: {fileID: 489664193}
+  _collider: {fileID: 2102731713}
 --- !u!50 &2102731712
 Rigidbody2D:
   serializedVersion: 5
@@ -1033,7 +1033,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.011960626, y: 0.14751363}
+  m_Offset: {x: 0.0040228367, y: 0.12034181}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1043,7 +1043,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.6618178, y: 0.32223415}
+  m_Size: {x: 1.6298509, y: 0.2678905}
   m_EdgeRadius: 0
 --- !u!212 &2102731714
 SpriteRenderer:
