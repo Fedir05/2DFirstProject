@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Assets.Scripts
+namespace Scripts.Player
 
 {
     public class PlayerInputManager : MonoBehaviour
     {
         [SerializeField] private PlayerMovementManager playerMovementManager;
+        [SerializeField] private RandomColorGeneration spritePainter;
         
         public float MoveDirection { get; private set; }
         void Update()
@@ -14,6 +15,7 @@ namespace Assets.Scripts
             if (Input.GetKeyDown(KeyCode.W))
             {
                 playerMovementManager.TryJump();
+                spritePainter.ChangeSpriteColorToRandom();
             }
             
             MoveDirection = Input.GetAxis("Horizontal");

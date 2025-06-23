@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Scripts.Player
 {
     public class PlayerMovementManager : MonoBehaviour
     {
@@ -9,8 +9,6 @@ namespace Assets.Scripts
         [SerializeField] private float jumpForce = 5f;
         [SerializeField] private float groundCheckRadius = 1.2f;
         [SerializeField] private LayerMask groundMask;
-        [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private RandomColorGeneration randomColorGeneration;
         private bool isGrounded = false;
         
         
@@ -51,7 +49,6 @@ namespace Assets.Scripts
             if (isGrounded)
             {
                     player.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-                    spriteRenderer.color = randomColorGeneration.RandomColor();
             }
         }
     }
